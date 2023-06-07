@@ -1,17 +1,19 @@
 <script>
-	import dummydata from '$lib/dummydata.js';
 	import MovieCard from '$lib/components/MovieCard.svelte';
 
-	let movies = dummydata;
+	export let data;
+	let movies = data.results;
 	console.log(movies);
 </script>
 
 <h1>Popular Movies</h1>
 
 <div class="movie-grid">
-	{#each movies as movieData}
-		<MovieCard movie={movieData} />
-	{/each}
+	{#if movies}
+		{#each movies as movieData}
+			<MovieCard movie={movieData} />
+		{/each}
+	{/if}
 </div>
 
 <style>
